@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// 二进制转换
 func convertToBin(n int) string {
 	result := ""
 	for ; n > 0; n /= 2 {
@@ -18,23 +19,26 @@ func convertToBin(n int) string {
 	return result
 }
 
+// 一行一行读文件
 func printFile(filename string) {
-	file, err := os.Open(filename)
+	file, err := os.Open(filename) // 先打开文件 
 	if err != nil {
-		panic(err)
+		panic(err)  // 如果有错误，抛出异常
 	}
 
-	printFileContents(file)
+	printFileContents(file) // 读文件
 }
 
+// 只有终止条件，相当于 while
 func printFileContents(reader io.Reader) {
-	scanner := bufio.NewScanner(reader)
+	scanner := bufio.NewScanner(reader) // 一行一行读
 
-	for scanner.Scan() {
+	for scanner.Scan() {  // go没有while循环， 直接用终止条件的for就是while
 		fmt.Println(scanner.Text())
 	}
 }
 
+// 省略初始，省略结束，这样就是死循环了
 func forever() {
 	for {
 		fmt.Println("abc")

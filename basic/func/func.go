@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"runtime"
 )
-
+// 多个返回值，一般第二个是error,r如果有多余不用的返回值， 用_ 代替； panic是直接终端运行
 func eval(a, b int, op string) (int, error) {
 	switch op {
 	case "+":
@@ -24,6 +24,7 @@ func eval(a, b int, op string) (int, error) {
 	}
 }
 
+// 函数可以有多个返回值，但是显示的 return 比较有可读性
 func div(a, b int) (q, r int) {
 	return a / b, a % b
 }
