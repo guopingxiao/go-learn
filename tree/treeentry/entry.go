@@ -2,19 +2,21 @@ package main
 
 import (
 	"fmt"
-
-	"imooc.com/ccmouse/learngo/tree"
+	"xgp.com/golearn/tree"
 )
 
+// 定义myNode,返回 tree.node
 type myTreeNode struct {
 	node *tree.Node
 }
 
+// 通过组合的方式来扩展包，这里来扩展一个后续遍历，首先定义一个自己的myNode（私有的，然后通过myNode来扩展）
 func (myNode *myTreeNode) postOrder() {
 	if myNode == nil || myNode.node == nil {
 		return
 	}
 
+	// 先遍历左子树，再遍历右子树，再遍历节点
 	left := myTreeNode{myNode.node.Left}
 	right := myTreeNode{myNode.node.Right}
 
